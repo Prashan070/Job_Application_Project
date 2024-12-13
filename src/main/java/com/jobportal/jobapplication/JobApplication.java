@@ -1,4 +1,4 @@
-package com.jobportal.jobapplication.JobApplication;
+package com.jobportal.jobapplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,6 @@ public class JobApplication {
 		SpringApplication.run(JobApplication.class, args);
 	}
 
-	public void display(){
-		System.out.println("Hello world");
-	}
+
 
 }

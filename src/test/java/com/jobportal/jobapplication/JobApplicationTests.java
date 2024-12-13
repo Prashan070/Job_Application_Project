@@ -1,4 +1,4 @@
-package com.jobportal.jobapplication.JobApplication;
+package com.jobportal.jobapplication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
