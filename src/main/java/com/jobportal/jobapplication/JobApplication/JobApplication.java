@@ -10,4 +10,8 @@ public class JobApplication {
 		SpringApplication.run(JobApplication.class, args);
 	}
 
+	public void display(){
+		System.out.println("Hello world");
+	}
+	
 }
