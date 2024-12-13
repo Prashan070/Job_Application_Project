@@ -1,4 +1,6 @@
 package com.jobportal.jobapplication.service;
 
-public class JobServiceImpl {
+public class JobServiceImpl implements JobService{
+
+
 }
