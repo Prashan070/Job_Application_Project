@@ -5,5 +5,5 @@ import com.jobportal.jobapplication.entity.Job;
 public interface JobService {
 
 
-  public Job saveJob(Job job);
+ public Job saveJob(Job job);
 }

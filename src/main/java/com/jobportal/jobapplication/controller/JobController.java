@@ -11,11 +11,6 @@ public class JobController {
 
     private JobService jobService;
 
-    public JobController(JobService jobService) {
-        this.jobService = jobService;
-    }
-
-    @PostMapping("/job")
     public Job saveJob(Job job) {
         return jobService.saveJob(job);
     }
