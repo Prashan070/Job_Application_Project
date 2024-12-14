@@ -75,4 +75,6 @@ public class Job {
         this.jobApplication = jobApplication;
     }
 
+    public Job() {
+    }
 }
