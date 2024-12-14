@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Job {
@@ -12,6 +13,9 @@ public class Job {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long jobId;
+
+
+   @NotBlank(message = "Please Add Job Title")
     private String jobTitle;
     private String jobDescription;
     private String minSalary;

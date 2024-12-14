@@ -3,6 +3,7 @@ package com.jobportal.jobapplication.controller;
 
 import com.jobportal.jobapplication.entity.Job;
 import com.jobportal.jobapplication.service.JobService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class JobController {
     }
 
     @PostMapping("/jobs")
-    public Job saveJob(@RequestBody Job job) {
+    public Job saveJob(@Valid @RequestBody Job job) {
         return jobService.saveJob(job);
     }
 

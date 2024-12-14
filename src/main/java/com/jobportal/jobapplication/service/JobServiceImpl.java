@@ -49,16 +49,14 @@ public class JobServiceImpl implements JobService {
         if (Objects.nonNull(job.getMaxSalary()) && !"".equalsIgnoreCase(job.getMaxSalary())) {
             jobDB.setMaxSalary(job.getMaxSalary());
         }
-
         return jobRepository.save(jobDB);
-
-
     }
 
     @Override
     public Job fetchJobTitle(String jobTitle) {
-        return jobRepository.findByjobTitle(jobTitle);
+        return jobRepository.findByjobTitleIgnoreCase(jobTitle);
     }
+
 
 
 }
