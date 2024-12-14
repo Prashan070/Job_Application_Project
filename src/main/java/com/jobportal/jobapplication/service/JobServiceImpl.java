@@ -38,7 +38,26 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job updateJobById(Long jobId, Job job) {
-        return null;
+        Job jobDB = jobRepository.findById(jobId).get();
+
+        if (Objects.nonNull(job.getJobTitle()) && !"".equalsIgnoreCase(job.getJobTitle())) {
+            jobDB.setJobTitle(job.getJobTitle());
+        }
+        if (Objects.nonNull(job.getMinSalary()) && !"".equalsIgnoreCase(job.getMinSalary())) {
+            jobDB.setMaxSalary(job.getMinSalary());
+        }
+        if (Objects.nonNull(job.getMaxSalary()) && !"".equalsIgnoreCase(job.getMaxSalary())) {
+            jobDB.setMaxSalary(job.getMaxSalary());
+        }
+
+        return jobRepository.save(jobDB);
+
+
+    }
+
+    @Override
+    public Job fetchJobTitle(String jobTitle) {
+        return jobRepository.findByjobTitle(jobTitle);
     }
 
 

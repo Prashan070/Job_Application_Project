@@ -37,8 +37,16 @@ public class JobController {
         return "Job deleted successfully";
     }
 
+
     @PutMapping("jobs/{id}")
     public Job updateJobById(@PathVariable("id") Long jobId, @RequestBody Job job){
         return jobService.updateJobById(jobId,job);
     }
+
+    @GetMapping("jobs/jobTitle/{jobTitle}")
+    public Job fetchJobTitle(@PathVariable("jobTitle") String jobTitle){
+        return jobService.fetchJobTitle(jobTitle);
+    }
+
+
 }
