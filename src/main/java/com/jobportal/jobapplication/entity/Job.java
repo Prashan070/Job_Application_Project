@@ -6,8 +6,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Job {
 
    @Id
@@ -17,68 +23,16 @@ public class Job {
 
    @NotBlank(message = "Please Add Job Title")
     private String jobTitle;
+
+   @Length(min = 0, max = 1000)
     private String jobDescription;
+
+   @Positive
     private String minSalary;
+
+   @Positive
     private String maxSalary;
     private String jobApplication;
 
-    public Long getJobId() {
-        return jobId;
-    }
 
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
-    }
-
-    public String getMinSalary() {
-        return minSalary;
-    }
-
-    public void setMinSalary(String minSalary) {
-        this.minSalary = minSalary;
-    }
-
-    public String getMaxSalary() {
-        return maxSalary;
-    }
-
-    public void setMaxSalary(String maxSalary) {
-        this.maxSalary = maxSalary;
-    }
-
-    public String getJobApplication() {
-        return jobApplication;
-    }
-
-    public void setJobApplication(String jobApplication) {
-        this.jobApplication = jobApplication;
-    }
-
-    public Job(Long jobId, String jobTitle, String jobDescription, String minSalary, String maxSalary, String jobApplication) {
-        this.jobId = jobId;
-        this.jobTitle = jobTitle;
-        this.jobDescription = jobDescription;
-        this.minSalary = minSalary;
-        this.maxSalary = maxSalary;
-        this.jobApplication = jobApplication;
-    }
-
-    public Job() {
-    }
 }
