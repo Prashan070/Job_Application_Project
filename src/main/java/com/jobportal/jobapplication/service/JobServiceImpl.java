@@ -28,7 +28,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job fetchJobById(Long jobId) {
-        return jobRepository.findById(jobId).get();
+        return jobRepository.findById(jobId).orElse(null);
     }
 
     @Override

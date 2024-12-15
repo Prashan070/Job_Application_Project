@@ -6,6 +6,8 @@ import com.jobportal.jobapplication.service.JobService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,8 +36,15 @@ public class JobController {
     }
 
     @GetMapping("/jobs/{id}")
-    public Job fetchJobById(@PathVariable("id") Long jobId) {
-        return jobService.fetchJobById(jobId);
+    public ResponseEntity<Job> fetchJobById(@PathVariable("id") Long jobId) {
+
+        Job job = jobService.fetchJobById(jobId);
+        if (job != null) {
+            return ResponseEntity.ok(job);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
     }
 
     @DeleteMapping("jobs/{id}")
@@ -46,12 +55,12 @@ public class JobController {
 
 
     @PutMapping("jobs/{id}")
-    public Job updateJobById(@PathVariable("id") Long jobId, @RequestBody Job job){
-        return jobService.updateJobById(jobId,job);
+    public Job updateJobById(@PathVariable("id") Long jobId, @RequestBody Job job) {
+        return jobService.updateJobById(jobId, job);
     }
 
     @GetMapping("jobs/jobTitle/{jobTitle}")
-    public Job fetchJobTitle(@PathVariable("jobTitle") String jobTitle){
+    public Job fetchJobTitle(@PathVariable("jobTitle") String jobTitle) {
         return jobService.fetchJobTitle(jobTitle);
     }
 
