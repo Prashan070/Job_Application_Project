@@ -32,6 +32,7 @@ public class Job {
 
    @Positive
     private String maxSalary;
+
     private String jobApplication;
 
 

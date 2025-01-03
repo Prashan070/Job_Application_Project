@@ -4,8 +4,6 @@ package com.jobportal.jobapplication.controller;
 import com.jobportal.jobapplication.entity.Job;
 import com.jobportal.jobapplication.service.JobService;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +15,6 @@ public class JobController {
 
     private JobService jobService;
 
-    private final Logger logger = LoggerFactory.getLogger(JobController.class);
 
     public JobController(JobService jobService) {
         this.jobService = jobService;
@@ -25,13 +22,11 @@ public class JobController {
 
     @PostMapping("/jobs")
     public Job saveJob(@Valid @RequestBody Job job) {
-        logger.info("Inside saveJob of JobController");
         return jobService.saveJob(job);
     }
 
     @GetMapping("/jobs")
     public List<Job> fetchJobsList() {
-        logger.info("Inside fetchJobsList of JobController");
         return jobService.fetchJobsList();
     }
 

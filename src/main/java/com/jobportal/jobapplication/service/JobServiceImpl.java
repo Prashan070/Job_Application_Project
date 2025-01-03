@@ -2,15 +2,21 @@ package com.jobportal.jobapplication.service;
 
 import com.jobportal.jobapplication.entity.Job;
 import com.jobportal.jobapplication.repository.JobRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
+@Slf4j
 public class JobServiceImpl implements JobService {
 
     private JobRepository jobRepository;
+
+   // private static final Logger logger = LoggerFactory.getLogger(JobServiceImpl.class);
 
     public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
@@ -18,6 +24,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job saveJob(Job job) {
+      //  logger.info("Job has been created");
+        log.info("Job has been created");
         return jobRepository.save(job);
     }
 
@@ -33,6 +41,8 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void deleteJobById(Long jobId) {
+       // logger.info("Job is deleted");
+        log.info("Job is deleted");
         jobRepository.deleteById(jobId);
     }
 
@@ -56,7 +66,6 @@ public class JobServiceImpl implements JobService {
     public Job fetchJobTitle(String jobTitle) {
         return jobRepository.findByjobTitleIgnoreCase(jobTitle);
     }
-
 
 
 }
