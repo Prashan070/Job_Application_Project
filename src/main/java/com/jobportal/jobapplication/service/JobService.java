@@ -16,7 +16,7 @@ public interface JobService {
 
     public boolean deleteJobById(Long jobId);
 
-    public  Job updateJobById(Long jobId, Job job);
+    public  boolean updateJobById(Long jobId, Job job);
 
      public Job fetchJobTitle(String jobTitle);
 }

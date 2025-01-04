@@ -17,7 +17,7 @@ public class JobServiceImpl implements JobService {
 
     private JobRepository jobRepository;
 
-   // private static final Logger logger = LoggerFactory.getLogger(JobServiceImpl.class);
+    // private static final Logger logger = LoggerFactory.getLogger(JobServiceImpl.class);
 
     public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
@@ -25,7 +25,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job saveJob(Job job) {
-      //  logger.info("Job has been created");
+        //  logger.info("Job has been created");
         log.info("Job has been created");
         return jobRepository.save(job);
     }
@@ -42,26 +42,31 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean deleteJobById(Long jobId) {
-       // logger.info("Job is deleted");
+        // logger.info("Job is deleted");
         log.info("Job is deleted");
         jobRepository.deleteById(jobId);
         return true;
     }
 
     @Override
-    public Job updateJobById(Long jobId, Job job) {
-        Job jobDB = jobRepository.findById(jobId).get();
+    public boolean updateJobById(Long jobId, Job job) {
+        Optional<Job> updateJob = jobRepository.findById(jobId);
 
-        if (Objects.nonNull(job.getJobTitle()) && !"".equalsIgnoreCase(job.getJobTitle())) {
-            jobDB.setJobTitle(job.getJobTitle());
+        if (updateJob.isPresent()) {
+
+            Job existingJob = updateJob.get();
+
+            existingJob.setJobTitle(job.getJobTitle());
+            existingJob.setJobDescription(job.getJobDescription());
+            existingJob.setMaxSalary(job.getMaxSalary());
+            existingJob.setMinSalary(job.getMinSalary());
+            existingJob.setJobApplication(job.getJobApplication());
+
+            jobRepository.save(existingJob);
+
+            return true;
         }
-        if (Objects.nonNull(job.getMinSalary()) && !"".equalsIgnoreCase(job.getMinSalary())) {
-            jobDB.setMaxSalary(job.getMinSalary());
-        }
-        if (Objects.nonNull(job.getMaxSalary()) && !"".equalsIgnoreCase(job.getMaxSalary())) {
-            jobDB.setMaxSalary(job.getMaxSalary());
-        }
-        return jobRepository.save(jobDB);
+        return false;
     }
 
     @Override
