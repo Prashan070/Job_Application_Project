@@ -1,14 +1,11 @@
-package com.jobportal.jobapplication.service;
+package com.jobportal.jobapplication.Job.service;
 
-import com.jobportal.jobapplication.entity.Job;
-import com.jobportal.jobapplication.repository.JobRepository;
+import com.jobportal.jobapplication.Job.entity.Job;
+import com.jobportal.jobapplication.Job.repository.JobRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

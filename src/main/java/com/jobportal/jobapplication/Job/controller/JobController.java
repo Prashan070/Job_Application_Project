@@ -1,8 +1,8 @@
-package com.jobportal.jobapplication.controller;
+package com.jobportal.jobapplication.Job.controller;
 
 
-import com.jobportal.jobapplication.entity.Job;
-import com.jobportal.jobapplication.service.JobService;
+import com.jobportal.jobapplication.Job.entity.Job;
+import com.jobportal.jobapplication.Job.service.JobService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

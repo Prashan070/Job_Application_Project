@@ -1,9 +1,0 @@
-2025-01-03 10:28:26 INFO  c.j.j.service.JobServiceImpl - Job has been created
-2025-01-03 10:28:27 INFO  c.j.j.service.JobServiceImpl - Job has been created
-2025-01-03 10:28:28 INFO  c.j.j.service.JobServiceImpl - Job has been created
-2025-01-03 10:28:28 INFO  c.j.j.service.JobServiceImpl - Job has been created
-2025-01-03 10:28:37 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2025-01-03 10:28:37 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
-2025-01-03 10:28:37 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-01-03 10:28:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-01-03 10:28:37 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

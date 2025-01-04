@@ -15,7 +15,9 @@
         <!-- Rolling Policy -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 
-            <fileNamePattern>jobApp.%d{yyyy-MM-dd-HH-mm}.%i.log</fileNamePattern>
+           <fileNamePattern>jobApp.%d{yyyy-MM-dd-HH-mm}.%i.log</fileNamePattern>
+           <!-- <fileNamePattern>jobApp.%d{yyyy-MM-dd-HH}.%i.log</fileNamePattern> -->
+
             <!-- Maximum file size before rolling -->
             <maxFileSize>10MB</maxFileSize>
             <!-- Keep 30 days of logs -->

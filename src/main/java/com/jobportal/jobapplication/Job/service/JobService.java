@@ -1,6 +1,6 @@
-package com.jobportal.jobapplication.service;
+package com.jobportal.jobapplication.Job.service;
 
-import com.jobportal.jobapplication.entity.Job;
+import com.jobportal.jobapplication.Job.entity.Job;
 
 import java.util.List;
 import java.util.Optional;

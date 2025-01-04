@@ -1,4 +1,4 @@
-package com.jobportal.jobapplication.entity;
+package com.jobportal.jobapplication.Job.entity;
 
 
 import jakarta.persistence.Entity;
