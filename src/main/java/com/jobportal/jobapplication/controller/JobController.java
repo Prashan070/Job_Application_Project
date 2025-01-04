@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class JobController {
@@ -21,31 +22,34 @@ public class JobController {
     }
 
     @PostMapping("/jobs")
-    public Job saveJob(@Valid @RequestBody Job job) {
-        return jobService.saveJob(job);
+    public ResponseEntity<Job> saveJob(@Valid @RequestBody Job job) {
+        return new ResponseEntity<>(jobService.saveJob(job),HttpStatus.OK);
     }
 
     @GetMapping("/jobs")
-    public List<Job> fetchJobsList() {
-        return jobService.fetchJobsList();
+    public ResponseEntity<List<Job>> fetchJobsList() {
+        return new ResponseEntity<>(jobService.fetchJobsList(),HttpStatus.OK);
     }
 
     @GetMapping("/jobs/{id}")
     public ResponseEntity<Job> fetchJobById(@PathVariable("id") Long jobId) {
 
-        Job job = jobService.fetchJobById(jobId);
-        if (job != null) {
-            return ResponseEntity.ok(job);
+        Optional <Job> job = jobService.fetchJobById(jobId);
+
+        if (job.isPresent()) {
+            return new ResponseEntity<>(job.get(),HttpStatus.FOUND);
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
     }
 
     @DeleteMapping("jobs/{id}")
-    public String deleteJobById(@PathVariable("id") Long jobId) {
-        jobService.deleteJobById(jobId);
-        return "Job deleted successfully";
+    public ResponseEntity<String> deleteJobById(@PathVariable("id") Long jobId) {
+      boolean isDeleted =   jobService.deleteJobById(jobId);
+      if(isDeleted)
+        return new ResponseEntity<>("Job deleted successfully",HttpStatus.OK);
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
 

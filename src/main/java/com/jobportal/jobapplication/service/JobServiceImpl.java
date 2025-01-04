@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -35,15 +36,16 @@ public class JobServiceImpl implements JobService {
     }
 
     @Override
-    public Job fetchJobById(Long jobId) {
-        return jobRepository.findById(jobId).orElse(null);
+    public Optional<Job> fetchJobById(Long jobId) {
+        return jobRepository.findById(jobId);
     }
 
     @Override
-    public void deleteJobById(Long jobId) {
+    public boolean deleteJobById(Long jobId) {
        // logger.info("Job is deleted");
         log.info("Job is deleted");
         jobRepository.deleteById(jobId);
+        return true;
     }
 
     @Override
