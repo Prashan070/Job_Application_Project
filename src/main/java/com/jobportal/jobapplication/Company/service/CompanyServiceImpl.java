@@ -3,6 +3,7 @@ package com.jobportal.jobapplication.Company.service;
 import com.jobportal.jobapplication.Company.entity.Company;
 import com.jobportal.jobapplication.Company.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;

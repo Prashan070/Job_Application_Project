@@ -1,5 +1,6 @@
 package com.jobportal.jobapplication.Company.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jobportal.jobapplication.Job.entity.Job;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,8 @@ public class Company {
     private String name;
     private String description;
 
-    @OneToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
 

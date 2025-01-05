@@ -33,8 +33,8 @@ public class CompanyController {
         }
     }
 
-    @PutMapping
-    public ResponseEntity<String> saveCompany(Company company){
+    @PostMapping
+    public ResponseEntity<String> saveCompany(@RequestBody Company company){
         boolean isSaved = companyService.saveCompany(company);
         if(isSaved){
             return new ResponseEntity<>("Company is saved", HttpStatus.OK);

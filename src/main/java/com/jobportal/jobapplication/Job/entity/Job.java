@@ -1,10 +1,8 @@
 package com.jobportal.jobapplication.Job.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.jobportal.jobapplication.Company.entity.Company;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
@@ -28,12 +26,16 @@ public class Job {
     private String jobDescription;
 
    @Positive
-    private String minSalary;
+    private double minSalary;
 
    @Positive
-    private String maxSalary;
+    private double maxSalary;
 
     private String jobApplication;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
 
 }
