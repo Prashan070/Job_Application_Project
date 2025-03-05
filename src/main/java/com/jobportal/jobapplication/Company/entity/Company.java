@@ -2,6 +2,7 @@ package com.jobportal.jobapplication.Company.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jobportal.jobapplication.Job.entity.Job;
+import com.jobportal.jobapplication.Review.entity.Review;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,8 +27,8 @@ public class Company {
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
-
-   // private List<Review> reviews;
+   @OneToMany(mappedBy = "company")
+   private List<Review> reviews;
 
 
 }
