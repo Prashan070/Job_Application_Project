@@ -32,7 +32,7 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobResponseDto saveJob(JobRequestDto jobRequestDto) {
         //  logger.info("Job has been created");
-        log.info("Job has been created");
+       // log.info("Job has been created");
         Job job = JobMapper.mapJobRequestDtoToEntity(jobRequestDto);
         Job savedJob = jobRepository.save(job);
         return JobMapper.mapEntityToJobRequestDto(savedJob);

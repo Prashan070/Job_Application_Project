@@ -10,7 +10,7 @@
     <!-- File Appender: Logs to a file -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-        <file>jobApp.log</file>
+        <file>/tmp/jobApp.log</file>
 
         <!-- Rolling Policy -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
