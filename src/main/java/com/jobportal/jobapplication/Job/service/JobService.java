@@ -1,5 +1,7 @@
 package com.jobportal.jobapplication.Job.service;
 
+import com.jobportal.jobapplication.Job.dto.JobRequestDto;
+import com.jobportal.jobapplication.Job.dto.JobResponseDto;
 import com.jobportal.jobapplication.Job.entity.Job;
 
 import java.util.List;
@@ -8,15 +10,15 @@ import java.util.Optional;
 public interface JobService {
 
 
-    public Job saveJob(Job job);
+    public JobResponseDto saveJob(JobRequestDto jobRequestDto);
 
-    public List<Job> fetchJobsList();
+    public List<JobResponseDto> fetchJobsList();
 
-    public Optional<Job> fetchJobById(Long jobId);
+    public JobResponseDto fetchJobById(Long jobId);
 
-    public boolean deleteJobById(Long jobId);
+    public String deleteJobById(Long jobId);
 
-    public  boolean updateJobById(Long jobId, Job job);
+    public JobResponseDto updateJobById(Long jobId, JobRequestDto jobRequestDto);
 
-     public Job fetchJobTitle(String jobTitle);
+    public JobResponseDto fetchJobTitle(String jobTitle);
 }

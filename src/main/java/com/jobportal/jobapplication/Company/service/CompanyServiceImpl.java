@@ -1,6 +1,9 @@
 package com.jobportal.jobapplication.Company.service;
 
+import com.jobportal.jobapplication.Company.dto.CompanyRequestDto;
+import com.jobportal.jobapplication.Company.dto.CompanyResponseDto;
 import com.jobportal.jobapplication.Company.entity.Company;
+import com.jobportal.jobapplication.Company.mapper.CompanyMapper;
 import com.jobportal.jobapplication.Company.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,45 +22,39 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Company> getAllCompany() {
-        return companyRepository.findAll();
+    public List<CompanyResponseDto> getAllCompany() {
+        return companyRepository.findAll().stream().map(CompanyMapper::mapEntityToCompanyRequestDto).toList();
     }
 
     @Override
-    public boolean updateCompanyById(Company company, Long id) {
-        Optional<Company> updateCompany = companyRepository.findById(id);
-
-        if (updateCompany.isPresent()) {
-            Company existingCompany = updateCompany.get();
-            existingCompany.setDescription(company.getDescription());
-            existingCompany.setName(company.getName());
-            existingCompany.setJobs(company.getJobs());
-            companyRepository.save(existingCompany);
-            return true;
-        } else {
-            return false;
-        }
+    public CompanyResponseDto saveCompany(CompanyRequestDto companyRequestDto) {
+        Company company = CompanyMapper.mapCompanyRequestDtoToEntity(companyRequestDto);
+        Company savedCompany = companyRepository.save(company);
+        return CompanyMapper.mapEntityToCompanyRequestDto(savedCompany);
     }
 
     @Override
-    public boolean saveCompany(Company company) {
-        companyRepository.save(company);
-        System.out.println(company);
-        return true;
+    public String deleteCompanyById(Long id) {
+        companyRepository.findById(id).orElseThrow(() -> new RuntimeException("Not available"));
+        companyRepository.deleteById(id);
+        return "Deleted";
     }
 
     @Override
-    public boolean deleteCompanyByid(Long id) {
-        if (companyRepository.existsById(id)) {
-            companyRepository.deleteById(id);
-            return true;
-        } else {
-            return false;
-        }
+    public CompanyResponseDto getCompanyById(Long id) {
+        Company company = companyRepository.findById(id).orElseThrow(() -> new RuntimeException("Not available"));
+        return CompanyMapper.mapEntityToCompanyRequestDto(company);
     }
 
+
     @Override
-    public Optional<Company> getCompanyById(Long id) {
-       return companyRepository.findById(id);
+    public CompanyResponseDto updateCompanyById(CompanyRequestDto companyRequestDto, Long id) {
+        Company savedCompany = companyRepository.findById(id).orElseThrow(() -> new RuntimeException("Not available"));
+        Company company = CompanyMapper.mapCompanyRequestDtoToEntity(companyRequestDto);
+        savedCompany.setId(company.getId());
+        savedCompany.setName(company.getName());
+        savedCompany.setDescription(company.getName());
+        Company updatedCompany = companyRepository.save(savedCompany);
+        return CompanyMapper.mapEntityToCompanyRequestDto(updatedCompany);
     }
 }

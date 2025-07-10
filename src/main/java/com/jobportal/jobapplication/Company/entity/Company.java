@@ -23,12 +23,14 @@ public class Company {
     private String name;
     private String description;
 
+
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
    @OneToMany(mappedBy = "company")
    private List<Review> reviews;
+
 
 
 }

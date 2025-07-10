@@ -1,5 +1,7 @@
 package com.jobportal.jobapplication.Company.service;
 
+import com.jobportal.jobapplication.Company.dto.CompanyRequestDto;
+import com.jobportal.jobapplication.Company.dto.CompanyResponseDto;
 import com.jobportal.jobapplication.Company.entity.Company;
 
 import java.util.List;
@@ -7,13 +9,13 @@ import java.util.Optional;
 
 public interface CompanyService {
 
-    public List<Company> getAllCompany();
+    public List<CompanyResponseDto> getAllCompany();
 
-    public boolean updateCompanyById (Company company, Long id);
+    public CompanyResponseDto updateCompanyById (CompanyRequestDto companyRequestDto, Long id);
 
-    public boolean saveCompany(Company company);
+    public CompanyResponseDto saveCompany(CompanyRequestDto companyRequestDto);
 
-    public boolean deleteCompanyByid(Long id);
+    public String deleteCompanyById(Long id);
 
-    public Optional<Company> getCompanyById(Long id);
+    public CompanyResponseDto getCompanyById(Long id);
 }

@@ -1,6 +1,13 @@
 package com.jobportal.jobapplication.Review.service;
 
+import com.jobportal.jobapplication.Company.dto.CompanyResponseDto;
+import com.jobportal.jobapplication.Company.entity.Company;
+import com.jobportal.jobapplication.Company.mapper.CompanyMapper;
+import com.jobportal.jobapplication.Company.service.CompanyService;
+import com.jobportal.jobapplication.Review.dto.ReviewRequestDto;
+import com.jobportal.jobapplication.Review.dto.ReviewResponseDto;
 import com.jobportal.jobapplication.Review.entity.Review;
+import com.jobportal.jobapplication.Review.mapper.ReviewMapper;
 import com.jobportal.jobapplication.Review.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,26 +18,31 @@ import java.util.Optional;
 public class ReviewServiceImpl implements ReviewService {
 
     private ReviewRepository reviewRepository;
+    private CompanyService companyService;
 
-    public ReviewServiceImpl(ReviewRepository reviewRepository) {
+
+    public ReviewServiceImpl(ReviewRepository reviewRepository, CompanyService companyService) {
         this.reviewRepository = reviewRepository;
+        this.companyService = companyService;
     }
 
     @Override
-    public List<Review> getAllReview(Long companyId) {
-        return reviewRepository.findByCompanyId(companyId);
+    public List<ReviewResponseDto> getAllReview(Long companyId) {
+        return reviewRepository.findByCompanyId(companyId).stream().map(ReviewMapper::mapEntityToReviewRequestDto).toList();
     }
+
 
     @Override
-    public boolean saveReview(Review review, Long companyId) {
-        return false;
+    public ReviewResponseDto saveReview(ReviewRequestDto reviewRequestDto, Long companyId) {
+
+        CompanyResponseDto companyDto = companyService.getCompanyById(companyId);
+        Company company = CompanyMapper.mapCompanyResponseDtoToEntity(companyDto);
+        reviewRequestDto.setCompany(company);
+        Review review = ReviewMapper.mapReviewRequestDtoToEntity(reviewRequestDto);
+        Review savedReview = reviewRepository.save(review);
+        return ReviewMapper.mapEntityToReviewRequestDto(savedReview);
     }
 
-   // @Override
-   // public boolean saveReview(Review review) {
-    //    reviewRepository.save(review);
-     //   return true;
-   // }
 
     @Override
     public Optional<Review> getReviewById(Long id) {

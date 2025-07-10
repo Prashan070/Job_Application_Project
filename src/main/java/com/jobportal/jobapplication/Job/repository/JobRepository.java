@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface JobRepository extends JpaRepository<Job, Long> {
 
     public Job findByjobTitle(String jobTitle);
+
     public Job findByjobTitleIgnoreCase(String jobTitle);
 
 }

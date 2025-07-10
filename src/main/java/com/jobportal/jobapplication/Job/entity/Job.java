@@ -33,9 +33,11 @@ public class Job {
 
     private String jobApplication;
 
+
     @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
+
 
 
 }
