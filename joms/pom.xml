@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0</version>
+		<version>3.5.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.jobportal.jobapplication</groupId>
-	<artifactId>job-application</artifactId>
+	<groupId>com.project</groupId>
+	<artifactId>joms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>JobApplication</name>
-	<description>Demo project for Job Application</description>
+	<name>joms</name>
+	<description>Microservies for Job App</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -44,22 +44,15 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
 
@@ -70,7 +63,6 @@
 		</dependency>
 	</dependencies>
 
-
 	<build>
 		<plugins>
 			<plugin>
@@ -79,6 +71,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
